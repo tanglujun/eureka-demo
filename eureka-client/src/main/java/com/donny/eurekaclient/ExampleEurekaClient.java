@@ -129,15 +129,21 @@ public class ExampleEurekaClient {
 
         //eureka客户端配置
         EurekaClientConfigBean clientConfig = exampleEurekaClient.eurekaClientConfigBean();
+        clientConfig.setProxyHost("127.0.0.1");
+        clientConfig.setProxyPort("8888");
 
         //创建eureka客户端
         EurekaClient eurekaClient = new DiscoveryClient(applicationInfoManager, clientConfig);
 
         Set<String> regions= eurekaClient.getAllKnownRegions();
+
+
         System.out.println(regions);
         //从远程获取应用
         Applications applications = eurekaClient.getApplications();
         System.out.println(applications);
+
+
         eurekaClient.shutdown();
     }
 

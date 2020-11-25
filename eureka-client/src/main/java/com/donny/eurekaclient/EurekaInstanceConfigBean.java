@@ -10,14 +10,6 @@ import org.springframework.core.env.Environment;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 功能说明
- * <p>
- *
- * @author 唐陆军
- * @version 1.0.0
- * @date 2020/11/19
- */
 //@ConfigurationProperties("eureka.instance")
 public class EurekaInstanceConfigBean implements EurekaInstanceConfig {
 
@@ -70,27 +62,16 @@ public class EurekaInstanceConfigBean implements EurekaInstanceConfig {
     private boolean securePortEnabled;
 
     /**
-     * Indicates how often (in seconds) the eureka client needs to send heartbeats to
-     * eureka server to indicate that it is still alive. If the heartbeats are not
-     * received for the period specified in leaseExpirationDurationInSeconds, eureka
-     * server will remove the instance from its view, there by disallowing traffic to this
-     * instance.
-     *
-     * Note that the instance could still not take traffic if it implements
-     * HealthCheckCallback and then decides to make itself unavailable.
+     * 指示eureka客户端需要多长时间（以秒为单位）将心跳发送到* eureka服务器，以指示其仍处于活动状态。
+     * 如果在leaseExpirationDurationInSeconds中指定的时间段内未接收到心跳，则eureka服务器将通过禁止对该实例通信的方式从其视图中删除该实例。
+     * * *请注意，如果实例实现* HealthCheckCallback，然后决定使其自身不可用，则该实例仍无法获得流量。
      */
     private int leaseRenewalIntervalInSeconds = 30;
 
     /**
-     * Indicates the time in seconds that the eureka server waits since it received the
-     * last heartbeat before it can remove this instance from its view and there by
-     * disallowing traffic to this instance.
-     *
-     * Setting this value too long could mean that the traffic could be routed to the
-     * instance even though the instance is not alive. Setting this value too small could
-     * mean, the instance may be taken out of traffic because of temporary network
-     * glitches.This value to be set to atleast higher than the value specified in
-     * leaseRenewalIntervalInSeconds.
+     * *表示自从尤里卡服务器接收到上一个心跳以来，它可以从其视图中删除该实例以及在那里通过禁止对该实例进行通信的等待时间，以秒为单位。
+     * * *将该值设置得太长可能意味着即使实例未处于活动状态，也可以将流量路由到*实例。将此值设置得太小可能*意味着实例可能由于临时
+     * 网络故障而无法进行通信*将该值设置为至少比* leaseRenewalIntervalInSeconds中指定的值高。
      */
     private int leaseExpirationDurationInSeconds = 90;
 

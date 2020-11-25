@@ -4,14 +4,7 @@ package com.donny.eurekaclient;
 import org.springframework.core.env.PropertyResolver;
 import org.springframework.util.StringUtils;
 
-/**
- * 功能说明
- * <p>
- *
- * @author 唐陆军
- * @version 1.0.0
- * @date 2020/11/19
- */
+
 public final class IdUtils {
     private static final String SEPARATOR = ":";
     public static final String DEFAULT_SERVICE_ID_STRING = "${vcap.application.name:${spring.application.name:application}}:${vcap.application.instance_index:${spring.application.index:${local.server.port:${server.port:0}}}}:${vcap.application.instance_id:${cachedrandom.${vcap.application.name:${spring.application.name:application}}.value}}";

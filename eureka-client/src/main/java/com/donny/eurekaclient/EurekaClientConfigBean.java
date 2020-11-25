@@ -13,14 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 功能说明
- * <p>
- *
- * @author 唐陆军
- * @version 1.0.0
- * @date 2020/11/19
- */
+
 //@ConfigurationProperties(EurekaClientConfigBean.PREFIX) PREFIX = "eureka.client";
 public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
 
@@ -56,27 +49,22 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private EurekaTransportConfig transport = new DefaultEurekaTransportConfig(null, com.netflix.config.DynamicPropertyFactory.getInstance());
 
     /**
-     * Indicates how often(in seconds) to fetch the registry information from the eureka
-     * server.
+     指示从eureka *服务器获取注册表信息的频率（以秒为单位）。
      */
     private int registryFetchIntervalSeconds = 30;
 
     /**
-     * Indicates how often(in seconds) to replicate instance changes to be replicated to
-     * the eureka server.
+     *指示将实例更改复制到*尤里卡服务器的频率（以秒为单位）。
      */
     private int instanceInfoReplicationIntervalSeconds = 30;
 
     /**
-     * Indicates how long initially (in seconds) to replicate instance info to the eureka
-     * server.
+     *表示最初将实例信息复制到eureka *服务器的时间（以秒为单位）
      */
     private int initialInstanceInfoReplicationIntervalSeconds = 40;
 
     /**
-     * Indicates how often(in seconds) to poll for changes to eureka server information.
-     * Eureka servers could be added or removed and this setting controls how soon the
-     * eureka clients should know about it.
+     *指示轮询尤里卡服务器信息更改的频率（以秒为单位）。 *可以添加或删除Eureka服务器，并且此设置控制* eureka客户端应该多久知道一次。
      */
     private int eurekaServiceUrlPollIntervalSeconds = 5 * MINUTES;
 
@@ -101,16 +89,14 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private String proxyPassword;
 
     /**
-     * Indicates how long to wait (in seconds) before a read from eureka server needs to
-     * timeout.
+     *指示从eureka服务器读取需要等待多长时间（以秒为单位）。
      */
     private int eurekaServerReadTimeoutSeconds = 8;
 
     /**
-     * Indicates how long to wait (in seconds) before a connection to eureka server needs
-     * to timeout. Note that the connections in the client are pooled by
-     * org.apache.http.client.HttpClient and this setting affects the actual connection
-     * creation and also the wait time to get the connection from the pool.
+     *指示与eureka服务器的连接需要*等待超时的时间（以秒为单位）。
+     * 请注意，客户端中的连接由org.apache.http.client.HttpClient池化，
+     * 此设置会影响实际的连接创建以及从池中获取连接的等待时间。
      */
     private int eurekaServerConnectTimeoutSeconds = 5;
 
@@ -125,8 +111,7 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private String backupRegistryImpl;
 
     /**
-     * Gets the total number of connections that is allowed from eureka client to all
-     * eureka servers.
+     *获取从eureka客户端到所有* eureka服务器的允许的连接总数。
      */
     private int eurekaServerTotalConnections = 200;
 
@@ -179,12 +164,9 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private String region = "us-east-1";
 
     /**
-     * Indicates how much time (in seconds) that the HTTP connections to eureka server can
-     * stay idle before it can be closed.
-     *
-     * In the AWS environment, it is recommended that the values is 30 seconds or less,
-     * since the firewall cleans up the connection information after a few mins leaving
-     * the connection hanging in limbo.
+     *指示与eureka服务器的HTTP连接可以空闲多少时间（以秒为单位），然后才能关闭它。
+     *  * *在AWS环境中，建议将该值设置为30秒或更短，因为防火墙会在几分钟后清除连接信息，
+     *  使连接处于混乱状态，因此建议该值不超过30秒。
      */
     private int eurekaConnectionIdleTimeoutSeconds = 30;
 
@@ -255,22 +237,14 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private boolean useDnsForFetchingServiceUrls = false;
 
     /**
-     * Indicates whether or not this instance should register its information with eureka
-     * server for discovery by others.
-     *
-     * In some cases, you do not want your instances to be discovered whereas you just
-     * want do discover other instances.
+     *指示该实例是否应在eureka服务器上注册其信息以供他人发现。 * *在某些情况下，您不希望发现实例，而您*只是希望发现其他实例。
      */
     private boolean registerWithEureka = true;
 
     /**
-     * Indicates whether or not this instance should try to use the eureka server in the
-     * same zone for latency and/or other reason.
-     *
-     * Ideally eureka clients are configured to talk to servers in the same zone
-     *
-     * The changes are effective at runtime at the next registry fetch cycle as specified
-     * by registryFetchIntervalSeconds
+     *指示此实例是否应出于延迟和/或其他原因尝试在同一区域中使用eureka服务器。 * *理想情况下，
+     * 将eureka客户端配置为与同一区域中的服务器进行通信* *这些更改在运行时在由registryFetchIntervalSeconds
+     * 指定的下一个注册表获取周期有效
      */
     private boolean preferSameZoneEureka = true;
 
@@ -306,10 +280,7 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private boolean disableDelta;
 
     /**
-     * Comma separated list of regions for which the eureka registry information will be
-     * fetched. It is mandatory to define the availability zones for each of these regions
-     * as returned by availabilityZones. Failing to do so, will result in failure of
-     * discovery client startup.
+     *逗号分隔的区域列表，将获取*尤里卡注册表信息。必须定义每个区域的可用区*由availabilityZones返回。否则，将导致*发现客户端启动失败。
      *
      */
     private String fetchRemoteRegionsRegistry;
@@ -330,8 +301,7 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private boolean filterOnlyUpInstances = true;
 
     /**
-     * Indicates whether this client should fetch eureka registry information from eureka
-     * server.
+     *指示此客户端是否应从eureka *服务器获取eureka注册表信息。
      */
     private boolean fetchRegistry = true;
 
@@ -378,14 +348,12 @@ public class EurekaClientConfigBean implements EurekaClientConfig, Ordered {
     private String clientDataAccept = EurekaAccept.full.name();
 
     /**
-     * Indicates whether the client should explicitly unregister itself from the remote
-     * server on client shutdown.
+     *指示客户端是否应该在客户端关闭时从远程服务器显式注销自己。
      */
     private boolean shouldUnregisterOnShutdown = true;
 
     /**
-     * Indicates whether the client should enforce registration during initialization.
-     * Defaults to false.
+     *指示客户端是否应在初始化期间强制注册。 *默认为false。
      */
     private boolean shouldEnforceRegistrationAtInit = false;
 

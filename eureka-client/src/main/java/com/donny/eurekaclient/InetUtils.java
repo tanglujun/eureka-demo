@@ -19,14 +19,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 功能说明
- * <p>
- *
- * @author 唐陆军
- * @version 1.0.0
- * @date 2020/11/19
- */
+
 public class InetUtils implements Closeable {
     private final ExecutorService executorService;
     private final InetUtilsProperties properties;

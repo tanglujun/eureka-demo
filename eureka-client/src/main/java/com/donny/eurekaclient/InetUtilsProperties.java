@@ -4,14 +4,7 @@ package com.donny.eurekaclient;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 功能说明
- * <p>
- *
- * @author 唐陆军
- * @version 1.0.0
- * @date 2020/11/19
- */
+
 public class InetUtilsProperties {
 
     public static final String PREFIX = "spring.cloud.inetutils";
